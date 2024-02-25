@@ -2,7 +2,9 @@
 
 ## Linux system calls
 
-See [man 2 syscall](https://man7.org/linux/man-pages/man2/syscall.2.html) for more detail and other architectures.
+The "return value" is either a negative error number (which libc negates and stores in `errno`) or the actual result. See [bionic's riscv64 syscall(2)](https://android.googlesource.com/platform/bionic/+/main/libc/arch-riscv64/bionic/syscall.S#45) for an example implementation.
+
+See also [man 2 syscall](https://man7.org/linux/man-pages/man2/syscall.2.html) for architectures not covered here.
 
 ### arm32
 On entry:  
