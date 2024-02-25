@@ -12,7 +12,7 @@ On entry:
 On exit:  
   r0 - return value
 
-Note: arm32 splits 64-bit arguments across register pairs, but each pairs must start with an even-numbered register.
+Note: arm32 splits 64-bit arguments across register pairs, but each pair must start with an even-numbered register.
 
 ## arm64
 On entry:  
