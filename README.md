@@ -7,7 +7,7 @@
 | Number  | Name     | Use                                   | Type        |
 | ------- | -------- | ------------------------------------- | ----------- |
 | r0-r3   |          | Arguments                             | Caller-save |
-| r4-r11  |          | Temporary registers                   | Callee-save |
+| r4-r11  |          | Temporaries                           | Callee-save |
 | r12     | ip       | Intra-procedural scratch register     |             |
 | r13     | sp       | Stack pointer                         |             |
 | r14     | lr       | Link register                         |             |
@@ -16,7 +16,29 @@
 
 ### arm64
 
-TODO
+| Number  | Name     | Use                                   | Type        |
+| ------- | -------- | ------------------------------------- | ----------- |
+| x0-r7   |          | Arguments                             |             |
+| x8      | xr       | Indirect result / temporary           | Caller-save |
+| x9-x15  |          | Temporaries (caller-save)             | Caller-save |
+| x16-x17 | ip0/ip1  | Intra-procedural scratch registers    |             |
+| x18     |          | Platform-specific                     |             |
+| x19-x28 |          | Temporaries (callee-save)             | Callee-save |
+| x29     | fp       | Frame pointer                         |             |
+| x30     | lr       | Link register                         |             |
+| x31     | sp/xzr   | Stack pointer/zero register           |             |
+
+`x8` is used to return values too large to be returned in registers. Since that doesn't happen often, it's effectively an extra caller-save temporary.
+
+`x16` and `x17` (`ip0` and `ip1`) are used (and clobbered) by the GOT/PLT stubs.
+
+`x18` is typically used for the software shadow stack pointer.
+
+| Number  | Name     | Use                                   | Type        |
+| ------- | -------- | ------------------------------------- | ----------- |
+| v0-v7   |          | Arguments                             |             |
+| v8-v15  |          | Temporaries (callee-save)             | Callee-save |
+| v16-v31 |          | Temporaries (caller-save)             | Caller-save |
 
 ### riscv64
 
