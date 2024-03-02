@@ -87,44 +87,12 @@ The "return value" is either a negative error number (which libc negates and sto
 
 See also [man 2 syscall](https://man7.org/linux/man-pages/man2/syscall.2.html) for architectures not covered here.
 
-### arm32
-On entry:  
-  r0-r6 - arguments  
-  r7 - system call number
-
-On exit:  
-  r0 - return value
+| Architecture | Arguments                    | System call number | Return value |
+| ------------ | ---------------------------- | ------------------ | ------------ |
+| arm32        | r0-r6                        | r7                 | r0           |
+| arm64        | x0-x5                        | w8                 | x0           |
+| riscv64      | a0-a5                        | a7                 | a0           |
+| x86          | ebx, ecx, edx, esi, edi, rbp | eax                | eax          |
+| x86-64       | rdi, rsi, rdx, r10, r8, r9   | rax                | rax          |
 
 Note: arm32 splits 64-bit arguments across register pairs, but each pair must start with an even-numbered register.
-
-## arm64
-On entry:  
-  x0-x5 - arguments  
-  w8 - system call number
-
-On exit:  
-  x0 - return value
-
-## riscv64
-On entry:  
-  a0-a5 - arguments  
-  a7 - system call number
-
-On exit:  
-  a0 - return value
-
-## x86
-On entry:  
-  ebx,ecx,edx,esi,edi,ebp - arguments  
-  eax - system call number
-
-On exit:  
-  eax - return value
-
-## x86-64
-On entry:  
-  rdi,rsi,rdx,r10,r8,r9 - arguments  
-  rax - system call number
-
-On exit:  
-  rax - return value
