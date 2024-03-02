@@ -75,11 +75,19 @@ See also: [RISC-V ELF psABI](https://github.com/riscv-non-isa/riscv-elf-psabi-do
 
 ### x86
 
-TODO
+All arguments passed on the stack, in right-to-left order (!), with the caller responsible for stack cleanup. `eax` used for the return value.
 
 ### x86-64
 
-TODO
+| Name                          | Use                       | Type        |
+| ----------------------------- | ------------------------- | ----------- |
+| rax                           | Return value              | Caller-save |
+| rdi, rsi, rdx, rcx, r8, r9    | Arguments                 | Caller-save |
+| rax, r10, r11                 | Temporaries (caller-save) | Caller-save |
+| rbp, rbx, r12, r13, r14, r15  | Temporaries (callee-save) | Callee-save |
+| rsp                           | Stack pointer             |             |
+
+Because x86 has so few registers, frame pointers have typically been omitted, but `rbp` is the frame pointer when used.
 
 ## Linux system calls
 
