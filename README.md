@@ -25,11 +25,13 @@ TODO
 | x18-x27 | s2-s11   | Callee-saved registers 2              | Callee-save |
 | x28-x31 | t3-t6    | Temporary registers 2                 | Caller-save |
 
-*Frame pointer*: `x8` (`s0`) is used as the [frame pointer](https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc#frame-pointer-convention).
+`x8` (`s0`) is used as the [frame pointer](https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc#frame-pointer-convention).
 
 `x3` (`gp`) is called "global pointer" because embedded systems might use it for that, but it's more likely to be the software shadow stack pointer.
 
 The stack is 16-byte (128-bit) aligned at all times.
+
+Temporary and callee-saved registers are each broken into two blocks so the C extension can directly access the first block of each.
 
 | Number  | Name     | Use                                   | Type        |
 | ------- | -------- | ------------------------------------- | ----------- |
