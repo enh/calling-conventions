@@ -4,7 +4,15 @@
 
 ### arm32
 
-TODO
+| Number  | Name     | Use                                   | Type        |
+| ------- | -------- | ------------------------------------- | ----------- |
+| r0-r3   |          | Arguments                             | Caller-save |
+| r4-r11  |          | Temporary registers                   | Callee-save |
+| r12     | ip       | Intra-procedural scratch register     |             |
+| r13     | sp       | Stack pointer                         |             |
+| r14     | lr       | Link register                         |             |
+
+`r12` (`ip`) is used (and clobbered) by the GOT/PLT stubs.
 
 ### arm64
 
@@ -15,8 +23,8 @@ TODO
 | Number  | Name     | Use                                   | Type        |
 | ------- | -------- | ------------------------------------- | ----------- |
 | x0      | zero     | Reads zero / discards writes          |             |
-| x1      | ra       | Return address                        | Caller-save |
-| x2      | sp       | Stack pointer                         | Callee-save |
+| x1      | ra       | Return address                        |             |
+| x2      | sp       | Stack pointer                         |             |
 | x3      | gp       | Platform-specific                     |             |
 | x4      | tp       | Thread pointer                        |             |
 | x5-x7   | t0-t2    | Temporary registers 1                 | Caller-save |
