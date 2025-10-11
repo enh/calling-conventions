@@ -77,6 +77,13 @@ See also: [RISC-V ELF psABI](https://github.com/riscv-non-isa/riscv-elf-psabi-do
 
 All arguments passed on the stack, in right-to-left order (!), with the caller responsible for stack cleanup. `eax` used for the return value.
 
+| Name                          | Use                       | Type        |
+| ----------------------------- | ------------------------- | ----------- |
+| eax                           | Return value              | Caller-save |
+| eax, ecx, edx                 | Temporaries (caller-save) | Caller-save |
+| esi, edi, ebx, ebp            | Temporaries (callee-save) | Callee-save |
+| esp                           | Stack pointer             |             |
+
 ### x86-64
 
 | Name                          | Use                       | Type        |
