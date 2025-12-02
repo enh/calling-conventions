@@ -111,3 +111,5 @@ See also [man 2 syscall](https://man7.org/linux/man-pages/man2/syscall.2.html) f
 | x86-64       | rdi, rsi, rdx, r10, r8, r9   | rax                | rax          |
 
 Note: arm32 splits 64-bit arguments across register pairs, but each pair must start with an even-numbered register.
+
+On arm32, the lr register (and the condition codes) are also clobbered, but on the other architectures only the register used for the return value is clobbered. (See the kernel's [arch-arm.h](https://github.com/torvalds/linux/blob/master/tools/include/nolibc/arch-arm.h) et cetera for more details.)
